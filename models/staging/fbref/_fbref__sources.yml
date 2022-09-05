@@ -203,3 +203,97 @@ sources:
             tests:
               - not_null
 
+      - name: match_stats_summary
+        description: Summary stats for each match, for players who played the match
+        columns:
+          - name: League
+            description: League
+          - name: Match_Date
+            description: Match date
+          - name: Matchweek
+            description: Matchweek
+          - name: Home_Team
+            description: Home team
+          - name: Home_Formation
+            description: Home team formation
+          - name: Home_Score
+            description: Number of home team goals
+          - name: Home_xG
+            description: Probability that a home team shot will result in a goal based on the characteristics of that shot and the events leading up to it
+          - name: Home_Goals
+            description: Home team players who scored the goal and the minute
+          - name: Home_Yellow_Cards
+            description: Number of yellow cards from the home team
+          - name: Home_Red_Cards
+            description: Number of red cards from the home team
+          - name: Away_Team
+            description: Away team
+          - name: Away_Formation
+            description: Away team formation
+          - name: Away_Score
+            description: Number of away team goals
+          - name: Away_XG
+            description: Probability that a away team shot will result in a goal based on the characteristics of that shot and the events leading up to it
+          - name: Away_Goals
+            description: Away team players who scored the goal and the minute
+          - name: Away_Yellow_Cards
+            description: Number of yellow cards from the away team
+          - name: Away_Red_Cards
+            description: Number of red cards from the away team
+          - name: Game_URL
+            description: Match url on Fbref
+            tests:
+              - not_null
+          - name: Team
+            description: Team
+          - name: Home_Away
+            description: Home team or away team
+            tests:
+              - accepted_values:
+                  values: ['Home', 'Away']
+          - name: Player
+            description: Player name
+          - name: Player_Num
+            description: Player number
+          - name: Nation
+            description: Player nation
+          - name: Pos
+            description: Player pos
+          - name: Age
+            description: Player age
+          - name: Min
+            description: Minutes played 
+          - name: Gls
+            description: Goals
+          - name: Ast
+            description: Assistences
+          - name: Pk
+            description: Penalty kicks made
+          - name: PKatt
+            description: Penalty kicks attempted
+          - name: Sh
+            description: Shots Total. Does not include penalty kicks
+          - name: SoT
+            description: Shots on target. Shots on target do not include penalty kicks
+          - name: CrdY
+            description: Yellow cards
+          - name: CrdR
+            description: Red cards
+          - name: Fls
+            description: Fouls Committed
+          - name: Fld
+            description: Fouls Drawn
+          - name: Off
+            description: Offsides
+          - name: Crs
+            description: Crosses
+          - name: TklW
+            description: Tackles in which the tackler's team won possession of the ball
+          - name: Int
+            description: Interceptions
+          - name: OG
+            description: Own goals
+          - name: PKwon
+            description: Penalty kicks won
+          - name: PKcon
+            description: Penalty kicks conceded
