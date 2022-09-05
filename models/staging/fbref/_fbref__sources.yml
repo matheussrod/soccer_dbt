@@ -154,3 +154,52 @@ sources:
             description: Score progression
           - name: Penalty_Number
 
+      - name: match_lineups
+        description: Lineups for home and away teams
+        columns:
+          - name: Matchday
+            description: Match date
+          - name: Team
+            description: Team
+          - name: Home_Away
+            description: Home team or away team
+            tests:
+              - accepted_values:
+                  values: ['Home', 'Away'] 
+          - name: Formation
+            description: Team formation
+          - name: Player_Num
+            description: Player number
+          - name: Player_Name
+            description: Player name
+          - name: Starting
+            description: Starting or reserve player - pitch or bench
+            tests:
+              - accepted_values:
+                  values: ['Pitch', 'Bench']
+          - name: PlayerURL
+            description: Player url on Fbref
+            tests:
+              - not_null
+              - unique
+          - name: Nation
+            description: Player nation
+          - name: Pos
+            description: Player pos
+          - name: Age
+            description: Player age
+          - name: Min
+            description: Minutes played
+          - name: Gls
+            description: Goals
+          - name: Ast
+            description: Assistences
+          - name: CrdY
+            description: Yellow cards
+          - name: CrdR
+            description: Red cards
+          - name: MatchURL
+            description: Match url on Fbref
+            tests:
+              - not_null
+
