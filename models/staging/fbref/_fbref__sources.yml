@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+  - name: brsoccer
+    description: Database containing information about Brazilian Serie A.
+    tables:
+      - name: match_results
+        description: Game results for leagues season(s).
+        columns:
+          - name: Country
+            description: Country
+          - name: Competition_Name
+            description: Competition name
+          - name: Season_End_Year
+            description: Season end year
+          - name: Gender
+            description: Gender
+
+          - name: MatchUrl
+            description: Match url on Fbref
+            tests:
+              - unique
+              - not_null
+          - name: Round
+          - name: Wk
+          - name: Date
+            description: Match date
+          - name: Day
+            description: Match week day
+          - name: Time
+            description: Match time
+
+          - name: Home
+            description: Home team
+          - name: HomeGoals
+            description: Number of home team goals
+          - name: Away
+            description: Away team
+          - name: AwayGoals
+            description: Number of away team goals
+
+          - name: Venue
+            description: Venue (stadium name)
+          - name: Attendance
+            description: Number of people in the match
+          - name: Referee
+            description: Match referee
+          - name: Notes
