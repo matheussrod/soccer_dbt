@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  - name: brsoccer
-    description: Database containing information about Brazilian Serie A.
+  - name: dbsoccer
+    description: Database containing information about leagues seasons.
     tables:
       - name: match_results
         description: Game results for leagues season(s).
@@ -46,3 +46,47 @@ sources:
           - name: Referee
             description: Match referee
           - name: Notes
+
+      - name: match_report
+        description: Match report details.
+        columns:
+          - name: League
+            description: League
+          - name: Match_Date
+            description: Match date
+          - name: Matchweek
+            description: Matchweek
+          - name: Home_Team
+            description: Home team
+          - name: Home_Formation
+            description: Home team formation
+          - name: Home_Score
+            description: Number of home team goals
+          - name: Home_xG
+            description: Probability that a home team shot will result in a goal based on the characteristics of that shot and the events leading up to it 
+          - name: Home_Goals
+            description: Home team players who scored the goal and the minute
+          - name: Home_Yellow_Cards
+            description: Number of yellow cards from the home team
+          - name: Home_Red_Cards
+            description: Number of red cards from the away team
+          - name: Away_Team
+            description: Away team
+          - name: Away_Formation
+            description: Away team formation
+          - name: Away_Score
+            description: Number of away team goals
+          - name: Away_xG
+            description: Probability that a away team shot will result in a goal based on the characteristics of that shot and the events leading up to it 
+          - name: Away_Goals
+            description: Away team players who scored the goal and the minute
+          - name: Away_Yellow_Cards
+            description: Number of yellow cards from the away team
+          - name: Away_Red_Cards
+            description: Number of red cards from the away team
+          - name: Game_URL
+            description: Match url on Fbref
+            tests:
+              - unique
+              - not_null
+
