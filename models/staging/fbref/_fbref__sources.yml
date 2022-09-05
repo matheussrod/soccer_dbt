@@ -146,6 +146,7 @@ sources:
             tests:
               - accepted_values:
                   values: [1, 2]
+                  quote: false
           - name: Event_Type
             description: Event type (e.g. goal, substitute, yellow card)
           - name: Event_Players
@@ -181,7 +182,6 @@ sources:
             description: Player url on Fbref
             tests:
               - not_null
-              - unique
           - name: Nation
             description: Player nation
           - name: Pos
@@ -283,7 +283,7 @@ sources:
             description: Fouls Committed
           - name: Fld
             description: Fouls Drawn
-          - name: Off
+          - name: "Off"
             description: Offsides
           - name: Crs
             description: Crosses
