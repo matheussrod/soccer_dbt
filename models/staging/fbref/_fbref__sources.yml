@@ -90,3 +90,67 @@ sources:
               - unique
               - not_null
 
+      - name: match_summary
+        description: Match summary data, including goals, subs and cards.
+        columns:
+          - name: League
+            description: League
+          - name: Match_Date
+            description: Match date
+          - name: Matchweek
+            description: Matchweek
+          - name: Home_Team
+            description: Home team
+          - name: Home_Formation
+            description: Home team formation
+          - name: Home_Score
+            description: Number of home team goals
+          - name: Home_xG
+            description: Probability that a home team shot will result in a goal based on the characteristics of that shot and the events leading up to it
+          - name: Home_Goals
+            description: Home team players who scored the goal and the minute
+          - name: Home_Yellow_Cards
+            description: Number of yellow cards from the home team
+          - name: Home_Red_Cards
+            description: Number of red cards from the home team
+          - name: Away_Team
+            description: Away team
+          - name: Away_Formation
+            description: Away team formation
+          - name: Away_Score
+            description: Number of away team goals
+          - name: Away_xG
+            description: Probability that a away team shot will result in a goal based on the characteristics of that shot and the events leading up to it
+          - name: Away_Goals
+            description: Away team players who scored the goal and the minute
+          - name: Away_Yellow_Cards
+            description:  Number of yellow cards from the away team
+          - name: Away_Red_Cards
+            description:  Number of red cards from the away team
+          - name: Game_URL
+            description: Match url on Fbref
+            tests:
+              - not_null
+          - name: Team
+            description: Team
+          - name: Home_Away
+            description: Home team or away team
+            tests:
+              - accepted_values:
+                  values: ['Home', 'Away']
+          - name: Event_Time
+            description: Event time
+          - name: Is_Pens
+          - name: Event_Half
+            description: 1 for the first half and 2 for the second half
+            tests:
+              - accepted_values:
+                  values: [1, 2]
+          - name: Event_Type
+            description: Event type (e.g. goal, substitute, yellow card)
+          - name: Event_Players
+            description: Event players
+          - name: Score_Progression
+            description: Score progression
+          - name: Penalty_Number
+
