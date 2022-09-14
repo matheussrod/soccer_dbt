@@ -369,3 +369,14 @@ sources:
               Save Percentage. Shots on Target Against - Goals Against)/Shots on Target Against.
               Note that not all shots on target are stopped by the keeper, many will be stopped by defenders.
               Does not include penalty kicks
+
+      - name: teams
+        description: Teams names and fbref urls
+        columns:
+          - name: team
+            description: Team name
+          - name: team_url
+            description: Team url in fbref
+            tests:
+              - unique
+              - not_null
