@@ -1,0 +1,165 @@
+version: 2
+
+models:
+  - name: stg_fbref__matchs_lineup
+    description: Lineups for home and away teams.
+    columns:
+      - name: player_url
+        description: Player url on Fbref
+        tests:
+          - unique
+      - name: match_url
+        description: Match url on Fbref
+        tests:
+          - not_null
+      - name: home_away
+        description: Home team or away team
+      - name: starting
+        description: Starting or reserve player - pitch or bench
+      - name: pos
+        description: Player pos
+      - name: age
+        description: Player age
+      - name: min
+        description: Minutes played
+
+  - name: stg_fbref__matchs_report
+    description: Match report details (formation and scores).
+    columns:
+      - name: match_url
+        description: Match url on Fbref
+      - name: home_team
+        description: Home team
+      - name: home_formation
+        description: Home team formation
+      - name: away_team
+        description: Away team
+      - name: away_formation
+        description: Away team formation
+      - name: home_score
+        description: Number of home team goals
+      - name: home_xG
+        description: Probability that a home team shot will result in a goal based on the characteristics of that shot and the events leading up to it
+      - name: away_score
+        description: Number of away team goals
+      - name: away_xG
+        description: Probability that a away team shot will result in a goal based on the characteristics of that shot and the events leading up to it
+
+  - name: stg_fbref__matchs_result
+    description: Matchs results for leagues season(s).
+    columns:
+      - name: match_url
+        description: Match url on Fbref
+      - name: country
+        description: Country
+      - name: league
+        description: League/Competition name
+      - name: season_end_year
+        description: Season end year
+      - name: gender
+        description: Gender
+      - name: wk
+        description: Match round
+      - name: match_weekday
+        description: Match week day
+      - name: home
+        description: Home team
+      - name: away
+        description: Away team
+      - name: home_goals
+        description: Number of home team goals
+      - name: away_goals
+        description: Number of away team goals
+      - name: attendance
+        description: Number of people in the match
+      - name: match_date
+        description: Match date
+      - name: match_time
+        description: Match time
+
+  - name: stg_fbref__matchs_stats_keeper
+    description:
+    columns:
+      - name:
+        description:
+
+  - name: stg_fbref__matchs_stats_summary
+    description: Summary stats for each match, for players who played the match.
+    columns:
+      - name: match_url
+        description: Match url on Fbref
+      - name: team
+        description: Team
+      - name: home_away
+        description: Home team or away team
+      - name: player
+        description: Player name
+      - name: pos
+        description: Player pos
+      - name: age
+        description: Player age
+      - name: min
+        description: Minutes played
+      - name: gls
+        description: Goals
+      - name: ast
+        description: Assistences
+      - name: pk
+        description: Penalty kicks made
+      - name: pk_att
+        description: Penalty kicks attempted
+      - name: sh
+        description: Shots Total. Does not include penalty kicks
+      - name: sot
+        description: Shots on target. Shots on target do not include penalty kicks
+      - name: crd_y
+        description: Yellow cards
+      - name: crd_r
+        description: Red cards
+      - name: fls
+        description: Fouls Committed
+      - name: fld
+        description: Fouls Drawn
+      - name: "off"
+        description: Offsides
+      - name: crs
+        description: Crosses
+      - name: tkl_w
+        description: Tackles in which the tackler's team won possession of the ball
+      - name: int
+        description: Interceptions
+      - name: og
+        description: Own goals
+      - name: pk_won
+        description: Penalty kicks won
+      - name: pk_con
+        description: Penalty kicks conceded
+
+  - name: stg_fbref__matchs_summary
+    description: Match summary data, including goals, subs and cards.
+    columns:
+      - name: match_url
+        description: Match url on Fbref
+      - name: team
+        description: Team
+      - name: home_away
+        description: Home team or away team
+      - name: event_type
+        description: Event time
+      - name: event_players
+        description: Event players
+      - name: score_progression
+        description: Score progression
+      - name: event_time
+        description: Event time
+      - name: event_half
+        description: 1 for the first half and 2 for the second half
+
+
+  - name: stg_fbref__teams
+    description: Teams names and fbref urls
+    columns:
+      - name: team_name
+        description: Team name
+      - name: team_url
+        description: Team url in fbref
