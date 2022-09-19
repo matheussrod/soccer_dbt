@@ -35,7 +35,9 @@ models:
   soccer_dbt:
     staging:
       +materialized: view
-    intermediate:
+    remodeling:
       +materialized: view
+    intermediate:
+      +materialized: ephemeral
     marts:
       +materialized: table
