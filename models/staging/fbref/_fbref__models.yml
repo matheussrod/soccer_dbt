@@ -78,10 +78,6 @@ models:
         description: Match time
 
   - name: stg_fbref__matchs_stats_keeper
-    description:
-    columns:
-      - name:
-        description:
 
   - name: stg_fbref__matchs_stats_summary
     description: Summary stats for each match, for players who played the match.
@@ -145,6 +141,7 @@ models:
       - name: home_away
         description: Home team or away team
       - name: event_type
+        #TODO: fix event_type description
         description: Event time
       - name: event_players
         description: Event players
