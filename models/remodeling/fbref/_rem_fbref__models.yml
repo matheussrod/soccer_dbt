@@ -1,0 +1,189 @@
+version: 2
+
+models:
+  - name: rem_fbref__leagues
+    description: "League information: country, league name, year and gender"
+    columns:
+      - name: league_id
+        decription: Primary key
+      - name: country
+        decription: League country
+      - name: league
+        decription: League name
+      - name: season_end_year
+        decription: League season end year
+      - name: gender
+        decription: League gender. M for male and F for female
+
+  - name: rem_fbref__matchs_events
+    description: >
+      Information regarding the events of a team for a specific match.
+      Related to rem_fbref__matchs_home_away.
+    columns:
+      - name: event_id
+        description: Primary key
+      - name: match_ha_id
+        description: Foreign key. See rem_fbref__matchs_home_away
+      - name: event_time
+        description: Minute in which the event occurred
+      - name: event_half
+        description: 1 for the first half and 2 for the second half
+      - name: event_type
+        description: Event type
+      - name: event_players
+        description: Players involved in the event
+      - name: score_progression
+        description: Score progression
+
+  - name: rem_fbref__matchs_formation
+    description: >
+      Information about the formation of a team for a specific match.
+      Related to rem_fbref__matchs_home_away.
+    columns:
+      - name: formation_id
+        description: Primary key
+      - name: match_ha_id 
+        description: Foreign key. See rem_fbref__matchs_home_away
+      - name: formation
+        descriptin: Team formation at the beginning of the game
+
+  - name: rem_fbref__matchs_home_away
+    description: >
+      Information about which teams played a certain match as well as whether they were away or home.
+      The view is built from an unpivot of the stg_fbref__matchs_result to facilitate future manipulations.
+      Related to rem_fbref__matchs and rem_fbref__teams.
+    columns:
+      - name: match_ha_id
+        description: Primary key
+      - name: match_id
+        description: Foreign key. See rem_fbref__matchs
+      - name: team_id
+        description: Foreign key. See rem_fbref__teams
+      - name: match_url
+        description: Match url
+      - name: home_away
+        description: Home team or away team
+
+  - name: rem_fbref__matchs_lineups
+    description: >
+      Information about a team's lineup in a given match. Contains information about all players selected for the match. 
+      If the player has not participated, the minutes will appear as null.
+      Related to rem_fbref__matchs_home_away.
+    columns:
+      - name: lineups_id
+        description: Primary key
+      - name: match_ha_id
+        description: Foreign key. See rem_fbref__matchs_home_away
+      - name: player_url
+        description: Player url
+      - name: starting
+        description: Starting or reserve player - pitch or bench
+      - name: pos
+        description: Player pos
+      - name: age
+        description: Player age
+      - name: min
+        description: Minutes played
+
+  - name: rem_fbref__matchs_score
+    description: >
+      Information about the goals of a given team for a given match.
+      Contains information on both home and away goals to facilitate future manipulations.
+      It is also possible to obtain the expected goals (xG).
+      Related to rem_fbref__matchs_home_away.
+    columns:
+      - name: score_id
+        description: Primary key
+      - name: match_ha_id
+        description: Foreign key. See rem_fbref__matchs_home_away
+      - name: home_score
+        description: Number of home team goals
+      - name: away_score
+        description: Number of away team goals
+      - name: home_xG
+        description: Probability that a home team shot will result in a goal based on the characteristics of that shot and the events leading up to it
+      - name: away_xG
+        description: Probability that a away team shot will result in a goal based on the characteristics of that shot and the events leading up to it
+
+  - name: rem_fbref__matchs_stats_summary
+    description: >
+      Information about general statistics of a given team in a given match.
+      Only the statistics of players who participated in the match (as a starter or reserve) will appear.
+      Related to rem_fbref__matchs_home_away.
+    columns:
+      - name: stats_summary_id
+        description: Primary key
+      - name: match_ha_id
+        description: Foreign key. See rem_fbref__matchs_home_away
+      - name: player
+        description: Player name
+      - name: age
+        description: Player age
+      - name: min
+        description: Minutes played
+      - name: gls
+        description: Goals
+      - name: ast
+        description: Assistences
+      - name: pk
+        description: Penalty kicks made
+      - name: pk_att
+        description: Penalty kicks attempted
+      - name: sh
+        description: Shots Total. Does not include penalty kicks
+      - name: sot
+        description: Shots on target. Shots on target do not include penalty kicks
+      - name: crd_y
+        description: Yellow cards
+      - name: crd_r
+        description: Red cards
+      - name: fls
+        description: Fouls Committed
+      - name: fld
+        description: Fouls Drawn
+      - name: "off"
+        description: Offsides
+      - name: crs
+        description: Crosses
+      - name: tkl_w
+        description: Tackles in which the tackler's team won possession of the ball
+      - name: int
+        description: Interceptions
+      - name: og
+        description: Own goals
+      - name: pk_won
+        description: Penalty kicks won
+      - name: pk_con
+        description: Penalty kicks conceded
+
+  - name: rem_fbref__matchs
+    description: >
+      General information about a match. The breakdown is taken from rem_fbref__matchs_home_away.
+      Related to rem_fbref__leagues.
+    columns:
+      - name: match_id
+        description: Primary key
+      - name: league_id
+        description: Foreign key. See rem_fbref__teams
+      - name: match_url
+        description: Match url
+      - name: match_date
+        description: Match date
+      - name: match_weekday
+        description: Match week day
+      - name: match_time
+        description: Match time
+      - name: round
+        description: Match round
+      - name: attendance
+        description: Number of people in the match
+
+  - name: rem_fbref__teams
+    description: Information about team names and links
+    columns:
+      - name: team_id
+        description: Primary key
+      - name: team_name
+        description: Team name
+      - name: team_url
+        description: Team url
